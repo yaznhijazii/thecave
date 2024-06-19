@@ -1,0 +1,285 @@
+/* General Styles */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light gray background */
+    color: #2f2a1d; /* Dark gray text color */
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333; /* Dark background for header */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 300;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #575757; /* Darker background on hover */
+    border-radius: 5px;
+}
+
+main {
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #333;
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.logo-small {
+    max-width: 500px; /* Adjust the maximum width as per your preference */
+    margin: 10px auto; /* Center the logo horizontally with some top margin */
+    display: block;
+
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gallery img.active {
+    display: block;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 14px;
+    position: fixed; /* Keep the footer fixed at the bottom */
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    /* No need to change footer position here */
+    footer {
+        margin-top: 10px; /* Adjust margin or padding as necessary */
+        padding: 3px 0;
+    }
+}
+
+
+
+/* Large Image Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.8);}
+    to {transform: scale(1);}
+}
+
+.modal-content img {
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .carousel-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    footer {
+        position: static;
+    }
+    .about-section {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .about-logo {
+        max-width: 100%; /* Ensure the logo does not exceed its container */
+        margin-bottom: 20px; /* Adjust margin as needed */
+    }
+    
+    .about-content {
+        max-width: 800px; /* Adjust max width of content */
+        margin: 0 auto; /* Center align content */
+    }
+    
+    /* Example additional styling */
+    .about-content h2 {
+        color: #333;
+        font-size: 28px;
+    }
+    
+    .about-content p {
+        color: #666;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    
+   
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cave - Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="za.jpeg" type="image/jpeg">
+</head>
+<body>
+    <header>
+        <h1>The Cave</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Design</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Design</h2>
+
+        <!-- Reception Section -->
+        <section id="reception">
+            <h3>Reception</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="r1.jpeg,r2.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <h3>Gallery</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="g1.jpeg,g2.jpeg,g3.jpeg,g4.jpeg,g5.jpeg,g6.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Section -->
+        <section id="library">
+            <h3>Library</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="l1.jpeg,l2.jpeg,l3.jpeg,l4.jpeg,l5.jpeg,l6.jpeg,l7.jpeg,l8.jpeg,l9.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theater Section -->
+        <section id="theater">
+            <h3>Theater</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="th1.jpeg,th2.jpeg,th3.jpeg,th4.jpeg,th5.jpeg,th6.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cave Section -->
+        <section id="cave">
+            <h3>Cave</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="cav1.jpeg,cav2.jpeg,cav3.jpeg,cav4.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class Section -->
+        <section id="class">
+            <h3>Class</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="class1.jpeg,class2.jpeg,class3.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cafeteria Section -->
+        <section id="cafeteria">
+            <h3>Cafeteria</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="caf1.png,caf2.png"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booth Section -->
+        <section id="booth">
+            <h3>Booth</h3>
+            <div class="carousel-container">
+                <div class="carousel" data-images="bo1.jpeg,bo2.jpeg"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="prevImage(this.parentElement.parentElement)">&#10094;</button>
+                    <button class="carousel-button" onclick="nextImage(this.parentElement.parentElement)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+        <p>&nbsp;</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 The Cave</p>
+    </footer>
+    <script>
+        function initCarousels() {
+            document.querySelectorAll('.carousel').forEach(carousel => {
+                const images = carousel.getAttribute('data-images').split(',');
+                const gallery = document.createElement('div');
+                gallery.classList.add('gallery');
+                images.forEach((img, index) => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = img.trim();
+                    imgElement.addEventListener('click', () => openModal(imgElement.src));
+                    if (index === 0) imgElement.classList.add('active');
+                    gallery.appendChild(imgElement);
+                });
+                carousel.appendChild(gallery);
+            });
+        }
+
+        function prevImage(carouselContainer) {
+            const gallery = carouselContainer.querySelector('.gallery');
+            const images = gallery.querySelectorAll('img');
+            gallery.insertBefore(images[images.length - 1], images[0]);
+        }
+
+        function nextImage(carouselContainer) {
+            const gallery = carouselContainer.querySelector('.gallery');
+            const images = gallery.querySelectorAll('img');
+            gallery.appendChild(images[0]);
+        }
+
+        // Modal Functions
+        function openModal(src) {
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+            modal.onclick = closeModal;
+
+            const modalContent = document.createElement('div');
+            modalContent.classList.add('modal-content');
+
+            const img = document.createElement('img');
+            img.src = src;
+
+            const close = document.createElement('span');
+            close.classList.add('close');
+            close.innerHTML = '&times;';
+            close.onclick = closeModal;
+
+            modalContent.appendChild(close);
+            modalContent.appendChild(img);
+            modal.appendChild(modalContent);
+
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCarousels);
+    </script>
+</body>
+</html>
